@@ -2,7 +2,6 @@ defmodule Rumbl.Auth do
   import Plug.Conn
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
 
-
   def init(opts) do
     Keyword.fetch!(opts, :repo)
   end
@@ -18,6 +17,10 @@ defmodule Rumbl.Auth do
     |> assign(:current_user, user)
     |> put_session(:user_id, user.id)
     |> configure_session(renew: true)
+  end
+
+  def logout(conn) do
+    configure_session(conn, drop: true)
   end
 
   def login_by_username_and_pass(conn, username, given_pass, opts) do
