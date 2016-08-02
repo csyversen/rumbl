@@ -22,6 +22,7 @@ defmodule Rumbl.ModelCase do
       import Ecto.Changeset
       import Ecto.Query
       import Rumbl.ModelCase
+      import Rumbl.TestHelpers
     end
   end
 
@@ -34,6 +35,8 @@ defmodule Rumbl.ModelCase do
 
     :ok
   end
+
+
 
   @doc """
   Helper for returning list of errors in a struct when given certain data.
