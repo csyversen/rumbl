@@ -22,7 +22,7 @@ defmodule Rumbl.Video do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, @required_fields, @optional_fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     |> slugify_title()
     |> assoc_constraint(:category)
   end
